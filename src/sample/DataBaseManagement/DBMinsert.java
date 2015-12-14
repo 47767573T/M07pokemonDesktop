@@ -1,23 +1,15 @@
-package sample.DatabaseManage;
+package sample.DataBaseManagement;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.Statement;
 
-public class insertSQLite {
+public class DBMinsert {
 
-    static String archivoDB = themovieDBproject.ficheroDB;
-    static String tablaPelis = themovieDBproject.nombreTablaPeliculas;
-    static String tablaActores = themovieDBproject.nombreTablaActores;
+    static String tablaActores = "";
     static Connection c;
     static Statement stmt;
+/*
 
-    /**
-     * Método para insertar registros de peliculas en la tabla de peliculas
-     * @param id campo ID de la peliculas para introducir en la BBDD
-     * @param titulo campo titulo de la pelicula para introducir en la BBDD
-     * @param fecha campo fecha de lanzamiento de la peliculas para introducir en la BBDD
-     */
     public static void insertTablaPelis(int id, String titulo, String fecha) {
         {
             try {
@@ -43,14 +35,6 @@ public class insertSQLite {
         }
     }
 
-    /**
-     * Método para insertar registros de peliculas en la tabla de peliculas
-     * @param id campo ID de la relacion entre pelicula y actor para introducir en la BBDD
-     * @param nombre campo nombre de la pelicula para introducir en la BBDD
-     * @param actor campo fecha de lanzamiento de la peliculas para introducir en la BBDD
-     * @param personaje campo persona de la peliculas para introducir en la BBDD
-     * @param idPeli campo ID de la pelicula para introducir en la BBDD
-     */
     public static void insertTablaActores(int id, String nombre, long actor, String personaje, int idPeli) {
         {
             try {
@@ -74,5 +58,5 @@ public class insertSQLite {
             }
             //System.out.println("Guardado ("+nombre+") en ("+themovieDBproject.nombreTablaActores+")");        FLAG
         }
-    }
+    }*/
 }
