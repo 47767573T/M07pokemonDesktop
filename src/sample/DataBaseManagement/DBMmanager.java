@@ -36,9 +36,7 @@ public class DBMmanager {
 
     }
 
-    public void insertDB(){
 
-    }
 
     /**
      * método que comprueba si la BBDD que se va a crear, existe

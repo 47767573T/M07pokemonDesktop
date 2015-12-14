@@ -14,6 +14,11 @@ public class Pokedex{
     private String name;
     private List<Pokemon> pokemon;
 
+
+    //CONSTRUCTORS
+
+    public Pokedex(){}
+
     public Pokedex(String created, String modified, String name, List<Pokemon> pokemon) {
         this.created = created;
         this.modified = modified;
@@ -21,12 +26,17 @@ public class Pokedex{
         this.pokemon = pokemon;
     }
 
+
+    //GETTERS y SETTERS
     public String getCreated() {return created;}
     public void setCreated(String created) {this.created = created;}
+
     public String getModified() {return modified;}
     public void setModified(String modified) {this.modified = modified;}
+
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
+
     public List<Pokemon> getPokemon() {return pokemon;}
     public void setPokemon(List<Pokemon> pokemon) {this.pokemon = pokemon;}
 }

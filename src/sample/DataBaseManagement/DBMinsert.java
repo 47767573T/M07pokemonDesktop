@@ -18,13 +18,13 @@ public class DBMinsert {
 
             stmt = connection.createStatement();
 
-            //Formar el estamento para insertar en las tablas por cada pelicula
+            //Formar el estamento para insertar en las tablas por cada pokemon
             String sql = "INSERT INTO POKEMON "
                             +"(ID,NAME,LIFEPOINTS,RESOURCE_URI,IMAGE) "
                         +"VALUES "
                             +"("+id+",'"+name+"','"+lp+"','"+resURI+"','"+img+"');";
-            stmt.executeUpdate(sql);
 
+            stmt.executeUpdate(sql);
             stmt.close();
             connection.commit();
             connection.close();
@@ -33,6 +33,6 @@ public class DBMinsert {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
-
+        System.out.println("Insertado ("+id+")"+name+"");
     }
 }

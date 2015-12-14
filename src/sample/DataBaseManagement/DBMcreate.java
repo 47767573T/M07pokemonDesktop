@@ -20,14 +20,14 @@ public class DBMcreate {
             stmt = connection.createStatement();
 
             //Definimos la estructura de las tablas para pokemons
-            String sqlPoke = "CREATE TABLE POKEMON"
+            String sql = "CREATE TABLE POKEMON"
                     + "(ID INT PRIMARY KEY     NOT NULL,"
                     + " NAME                CHAR(100),"
                     + " LIFEPOINTS          CHAR(50),"
                     + " RESOURCE_URI        CHAR(250),"
                     + " IMAGE               CHAR(250))";
 
-            stmt.executeUpdate(sqlPoke);
+            stmt.executeUpdate(sql);
             stmt.close();
             connection.close();
 
