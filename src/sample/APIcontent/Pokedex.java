@@ -1,7 +1,6 @@
 package sample.APIcontent;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,10 +8,11 @@ import java.util.List;
  */
 public class Pokedex{
 
+
     private String created;
     private String modified;
     private String name;
-    private List<Pokemon> pokemon = new ArrayList<Pokemon>();
+    private List<Pokemon> pokemon;
 
     public Pokedex(String created, String modified, String name, List<Pokemon> pokemon) {
         this.created = created;

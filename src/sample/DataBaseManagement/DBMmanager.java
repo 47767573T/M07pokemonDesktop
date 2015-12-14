@@ -13,7 +13,10 @@ public class DBMmanager {
     static public String dbRuta;
     static public Connection conn;
 
-
+    /**
+     * método para crear la base de datos y la tabla de pokemons si ésta no existe.
+     * * @param nombre. el nombre que tomara el archivo de la BBDD
+     */
     public void createDB(String nombre){
         this.dbRuta = "jdbc:sqlite:"+nombre+".db";
 
@@ -22,18 +25,26 @@ public class DBMmanager {
 
             try {
                 Class.forName("org.sqlite.JDBC");
-                conn = DriverManager.getConnection(dbRuta);
+                conn = DriverManager.getConnection(dbRuta); //CREAMOS LA BBDD
+                DBMcreate.createTabla();                    //CREAMOS LA TABLA DE POKEMOS
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }else System.out.println("DataBase existe");
 
-        }else System.out.println("DataBase ya existe");
-
-        DBMcreate.createTabla();
     }
 
+    public void insertDB(){
+
+    }
+
+    /**
+     * método que comprueba si la BBDD que se va a crear, existe
+     * @param nombre archivo que comprobará.
+     * @return true si existe, false si no existe
+     */
     private boolean dbRutaExist(String nombre) {
         String ruta = "C:\\Users\\Moises\\Desktop\\Git\\M07pokemonDesktop\\"+nombre+".db";
         File fichero = new File (ruta);

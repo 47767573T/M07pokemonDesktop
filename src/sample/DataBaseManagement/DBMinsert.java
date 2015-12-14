@@ -1,62 +1,38 @@
 package sample.DataBaseManagement;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class DBMinsert {
 
-    static String tablaActores = "";
-    static Connection c;
-    static Statement stmt;
-/*
+    static String dbFichero = DBMmanager.dbRuta;
+    static Connection connection = DBMmanager.conn;
+    static Statement stmt = null;
 
-    public static void insertTablaPelis(int id, String titulo, String fecha) {
-        {
-            try {
-                Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection(archivoDB);
-                c.setAutoCommit(false);
+    public static void insertTablaPelis(int id, String name, String lp, String resURI, String img) {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(dbFichero);
+            connection.setAutoCommit(false);
 
-                stmt = c.createStatement();
+            stmt = connection.createStatement();
 
-                //Formar el estamento para insertar en las tablas por cada pelicula
-                String sql = "INSERT INTO "+tablaPelis+" (ID,TITULO,FECHA) "
-                            +"VALUES ("+id+",'"+titulo+"','"+fecha+"');";
-                stmt.executeUpdate(sql);
+            //Formar el estamento para insertar en las tablas por cada pelicula
+            String sql = "INSERT INTO POKEMON "
+                            +"(ID,NAME,LIFEPOINTS,RESOURCE_URI,IMAGE) "
+                        +"VALUES "
+                            +"("+id+",'"+name+"','"+lp+"','"+resURI+"','"+img+"');";
+            stmt.executeUpdate(sql);
 
-                stmt.close();
-                c.commit();
-                c.close();
+            stmt.close();
+            connection.commit();
+            connection.close();
 
-            } catch (Exception e) {
-                System.err.println(e.getClass().getName() + ": " + e.getMessage());
-                System.exit(0);
-            }
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
         }
+
     }
-
-    public static void insertTablaActores(int id, String nombre, long actor, String personaje, int idPeli) {
-        {
-            try {
-                Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection(archivoDB);
-                c.setAutoCommit(false);
-
-                //Formar el estamento para insertar en las tablas de actor por cada pelicula
-                stmt = c.createStatement();
-                String sql = "INSERT INTO "+tablaActores+" (ID,NOMBRE,ID_ACTOR,PERSONAJE,ID_PELICULA) "
-                        +"VALUES ("+id+",'"+nombre+"',"+actor+",'"+personaje+"',"+idPeli+");";
-                stmt.executeUpdate(sql);
-
-                stmt.close();
-                c.commit();
-                c.close();
-
-            } catch (Exception e) {
-                System.err.println(e.getClass().getName()+e.getClass().getMethods() + ": " + e.getMessage());
-                System.exit(0);
-            }
-            //System.out.println("Guardado ("+nombre+") en ("+themovieDBproject.nombreTablaActores+")");        FLAG
-        }
-    }*/
 }
