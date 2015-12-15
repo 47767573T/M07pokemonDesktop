@@ -3,6 +3,7 @@ package sample.APIcontent;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
+import sample.DataBaseManagement.DBMmanager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class APImanager {
 
     /**
      * Extraer la informacion del JSON de pokemon a informacion para crear los objetos pokemon
+     * y, por ultimo, lo guarda en la tabla
      * @param jObj objeto json para extraer informacion para crear objetos pokemon
      * @throws IOException
      */
@@ -67,19 +69,22 @@ public class APImanager {
 
             //Creamos objeto json hijo para extraer informacion
             JSONObject hijoJO = (JSONObject) JSONValue.parse(getJSON(pokemonURL));
-            String id = hijoJO.get("pkdx_id").toString();
+            int id = Integer.parseInt(hijoJO.get("pkdx_id").toString());
             String lifePoints = hijoJO.get("hp").toString();
             String imageURL = baseURL+"media/img/"+id+".png";
 
             //Tras extraer informacion necesaria rellenamos el objeto pokemon y lo añadimo al array de pokemons
             Pokemon pokemon = new Pokemon();
-            pokemon.setId(Integer.parseInt(id));
+            pokemon.setId(id);
             pokemon.setName(name);
             pokemon.setLifepoints(lifePoints);
             pokemon.setResourceUri(pokemonURL);
             pokemon.setImage(imageURL);
 
             pokemons.add(pokemon);
+
+            //Lo insertamos en la tabla directamente
+            DBMmanager.insertDB(id, name, lifePoints, pokemonURL, imageURL);
         }
     }
 

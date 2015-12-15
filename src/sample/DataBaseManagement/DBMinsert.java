@@ -10,7 +10,7 @@ public class DBMinsert {
     static Connection connection = DBMmanager.conn;
     static Statement stmt = null;
 
-    public static void insertTablaPelis(int id, String name, String lp, String resURI, String img) {
+    public static void insertPokemons(int id, String name, String lp, String resURI, String img) {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(dbFichero);

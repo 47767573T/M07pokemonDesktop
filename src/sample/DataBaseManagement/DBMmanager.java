@@ -36,6 +36,9 @@ public class DBMmanager {
 
     }
 
+    public static void insertDB(int id, String name, String lifePoint, String resURI, String img) {
+        DBMinsert.insertPokemons(id, name, lifePoint, resURI, img);
+    }
 
 
     /**
