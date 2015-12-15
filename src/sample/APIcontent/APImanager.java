@@ -10,51 +10,85 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Moises on 14/12/2015.
  */
 public class APImanager {
 
-    private static String baseURL = "http://pokeapi.co/";
+    public static String baseURL = "http://pokeapi.co/";
     private static String pokedexURL = baseURL + "api/v1/pokedex/1/";
     private static String resource_URI = "";
     private static Pokedex pokedex;
-    private static ArrayList<Pokemon> pokemons;
+    private static List<Pokemon> pokemons;
 
 
-
+    /**
+     * Extraer la informacion del JSON de pokedex a informacion para crear los objetos pokedex
+     * @throws IOException
+     */
     public static void jsonToPokedex() throws IOException {
 
         pokedex = new Pokedex();
+
+        //Creamos objeto json para extraer informacion del json
         JSONObject jo = (JSONObject) JSONValue.parse(getJSON(pokedexURL));
 
         pokedex.setName(jo.get("name").toString());
         pokedex.setCreated(jo.get("created").toString());
         pokedex.setModified(jo.get("modified").toString());
 
+        //Llamamos al metodo para crear los objetos pokemons de la pokedex
         jsonToPokemon(jo);
+        pokedex.setPokemon(pokemons);
     }
 
+    /**
+     * Extraer la informacion del JSON de pokemon a informacion para crear los objetos pokemon
+     * @param jObj objeto json para extraer informacion para crear objetos pokemon
+     * @throws IOException
+     */
     public static void jsonToPokemon(JSONObject jObj) throws IOException {
 
         pokemons = new ArrayList<>();
+
+        //Creamos array de objetos Json
         JSONArray ja = (JSONArray) JSONValue.parse(jObj.get("pokemon").toString());
 
-        for (int i = 0; i < pokemons.size(); i++) {
+        //Recorremos el array creado para extraer informacion del json
+        for (int i = 0; i < ja.size(); i++) {
+
+            //Creamos objeto json padre para extraer nombre
+            JSONObject padreJO = (JSONObject) JSONValue.parse(getJSON(ja.get(i).toString()));
+            String name = padreJO.get("name").toString();
+
+            String pokemonURL = baseURL + padreJO.get("resource_uri").toString();
+
+            //Creamos objeto json hijo para extraer informacion
+            JSONObject hijoJO = (JSONObject) JSONValue.parse(getJSON(pokemonURL));
+            String id = hijoJO.get("pkdx_id").toString();
+            String lifePoints = hijoJO.get("hp").toString();
+            String imageURL = baseURL+"media/img/"+id+".png";
+
+            //Tras extraer informacion necesaria rellenamos el objeto pokemon y lo añadimo al array de pokemons
             Pokemon pokemon = new Pokemon();
-            JSONObject jo = (JSONObject) JSONValue.parse(getJSON(ja.get(i).toString()));
+            pokemon.setId(Integer.parseInt(id));
+            pokemon.setName(name);
+            pokemon.setLifepoints(lifePoints);
+            pokemon.setResourceUri(pokemonURL);
+            pokemon.setImage(imageURL);
 
-
-
-            pokemon.setId(i);
-            pokemon.setName(jo.get("name").toString());
-            //pokemon.setLifepoints(jo.get(""));
+            pokemons.add(pokemon);
         }
-
     }
 
-
+    /**
+     * método para conseguir el json de una Url que introduciremos como jsonURL
+     * @param jsonURL url de la que extraeremos el string json
+     * @return el string json extraido de la url
+     * @throws IOException
+     */
     public static String getJSON (String jsonURL) throws IOException {
         URL url = new URL(jsonURL);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

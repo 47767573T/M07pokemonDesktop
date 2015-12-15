@@ -12,18 +12,18 @@ public class Pokedex{
     private String created;
     private String modified;
     private String name;
-    private List<Pokemon> pokemon;
+    private List<Pokemon> pokemons;
 
 
     //CONSTRUCTORS
 
     public Pokedex(){}
 
-    public Pokedex(String created, String modified, String name, List<Pokemon> pokemon) {
+    public Pokedex(String created, String modified, String name, List<Pokemon> pokemons) {
         this.created = created;
         this.modified = modified;
         this.name = name;
-        this.pokemon = pokemon;
+        this.pokemons = pokemons;
     }
 
 
@@ -37,7 +37,7 @@ public class Pokedex{
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
-    public List<Pokemon> getPokemon() {return pokemon;}
-    public void setPokemon(List<Pokemon> pokemon) {this.pokemon = pokemon;}
+    public List<Pokemon> getPokemon() {return pokemons;}
+    public void setPokemon(List<Pokemon> pokemons) {this.pokemons = pokemons;}
 }
 
