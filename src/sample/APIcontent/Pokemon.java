@@ -15,7 +15,6 @@ public class Pokemon {
 
 
     //CONSTRUCTORES
-
     public Pokemon(int id, String name, String lifepoints, String resourceUri, String image) {
         this.id = id;
         this.name = name;
@@ -28,7 +27,6 @@ public class Pokemon {
 
 
     //SETTERS y GETTERS
-
     public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
