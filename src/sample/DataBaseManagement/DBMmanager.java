@@ -10,6 +10,7 @@ import java.sql.SQLException;
  */
 public class DBMmanager {
 
+    static public int idReciente = -1;
     static public String dbRuta;
     static public Connection conn;
 
@@ -40,13 +41,18 @@ public class DBMmanager {
         DBMinsert.insertPokemons(id, name, lifePoint, resURI, img);
     }
 
-    public static String[] getPokemon (int id){
+    public static String getPokemon (int id, int option){
         String[] pokemonSelected;
+
+        if (id != idReciente) pokemonSelected = DBMselect.pokemonInfo;
         pokemonSelected = DBMselect.getPokemon(id);
 
-
-
-        return pokemonSelected;
+        switch (option){
+            case 0: return id+" "+pokemonSelected[0];
+            case 1: return pokemonSelected[1];
+            case 2: return id+" "+pokemonSelected[3];
+            default: return "not found";
+        }
     }
 
 

@@ -16,6 +16,7 @@ import javax.swing.text.html.ImageView;
 
 public class Controller {
 
+    //ITEMS in GUI
     @FXML
     ImageView ivOverview;
     @FXML
@@ -35,6 +36,16 @@ public class Controller {
     @FXML
     Button btNext;
 
+    //Resto de variables internas
+    int idBack;
+    String imageBack;   //url de la ultima imagen vista
+    String lpBack;
+    String nameBack;
+
+    int idNext;
+    String imageNext;   //url de la la imagen desde la que se accede a la ultima imagen vista
+    String lpNext;
+    String nameNext;
 
 
     public ObservableList<String> items = FXCollections.observableArrayList();
@@ -43,7 +54,6 @@ public class Controller {
 
         apOverview.setVisible(false);       //inicialmente ocultamos el Overview
         lvPokemons.setItems(items);
-
 
         lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override

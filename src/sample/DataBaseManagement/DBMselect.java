@@ -13,12 +13,11 @@ public class DBMselect {
     static String dbFichero = DBMmanager.dbRuta;
     static Connection connection;
     static Statement stmt = null;
+    static String[] pokemonInfo = new String[4];
 
 
     public static String[] getPokemon (int id) {
-        String[] pokemonInfo = new String[2];
-        pokemonInfo[0] = "unknown";
-        pokemonInfo[1] = "-1";
+
 
         try {
             Class.forName("org.sqlite.JDBC");
@@ -30,6 +29,8 @@ public class DBMselect {
 
             pokemonInfo[0] = rs.getString("NAME");
             pokemonInfo[1] = rs.getString("LIFEPOINTS");
+            pokemonInfo[2] = rs.getString("RESOURCE_URI");
+            pokemonInfo[3] = rs.getString("IMAGE");
 
             rs.close();
             stmt.close();
@@ -37,8 +38,12 @@ public class DBMselect {
             return pokemonInfo;
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
-            System.exit(0);
+
+            pokemonInfo[0] = "not found";
+            pokemonInfo[1] = "0";
+            pokemonInfo[2] = "not found";
+            pokemonInfo[3] = "not found";
+            return pokemonInfo;
         }
-        return pokemonInfo;
     }
 }

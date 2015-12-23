@@ -11,7 +11,6 @@ public class DBMcreate {
     static Connection connection = DBMmanager.conn;
     static Statement stmt = null;
 
-
     public static void createTabla() {
         try {
             Class.forName("org.sqlite.JDBC");
