@@ -40,6 +40,15 @@ public class DBMmanager {
         DBMinsert.insertPokemons(id, name, lifePoint, resURI, img);
     }
 
+    public static String[] getPokemon (int id){
+        String[] pokemonSelected = new String[2];
+        pokemonSelected = DBMselect.getPokemon(id);
+
+
+
+        return pokemonSelected;
+    }
+
 
     /**
      * método que comprueba si la BBDD que se va a crear, existe
