@@ -16,7 +16,7 @@ public class DBMmanager {
 
     /**
      * método para crear la base de datos y la tabla de pokemons si ésta no existe.
-     * * @param nombre. el nombre que tomara el archivo de la BBDD
+     * * @param nombre del archivo de la BBDD
      */
     public void createDB(String nombre){
         this.dbRuta = "jdbc:sqlite:"+nombre+".db";
@@ -34,18 +34,22 @@ public class DBMmanager {
                 e.printStackTrace();
             }
         }else System.out.println("DataBase existe");
-
     }
 
-    public static void insertDB(int id, String name, String lifePoint, String resURI, String img) {
+
+    public void insertDB(int id, String name, String lifePoint, String resURI, String img) {
         DBMinsert.insertPokemons(id, name, lifePoint, resURI, img);
     }
+
 
     public static String getPokemon (int id, int option){
         String[] pokemonSelected;
 
         if (id != idReciente) pokemonSelected = DBMselect.pokemonInfo;
-        pokemonSelected = DBMselect.getPokemon(id);
+        else{
+            pokemonSelected = DBMselect.getPokemon(id);
+            idReciente = id;
+        }
 
         switch (option){
             case 0: return id+" "+pokemonSelected[0];
@@ -68,6 +72,4 @@ public class DBMmanager {
         if (fichero.exists()) return true;
         else return false;
     }
-
-
 }

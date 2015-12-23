@@ -61,6 +61,10 @@ public class Controller {
 
             }
         });
+        apOverview.setVisible(true);
+
+
+
     }
 
     public void onSalir(ActionEvent actionEvent){
