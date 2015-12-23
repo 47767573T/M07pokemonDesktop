@@ -41,7 +41,7 @@ public class DBMmanager {
     }
 
     public static String[] getPokemon (int id){
-        String[] pokemonSelected = new String[2];
+        String[] pokemonSelected;
         pokemonSelected = DBMselect.getPokemon(id);
 
 

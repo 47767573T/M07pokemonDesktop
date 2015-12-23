@@ -28,11 +28,8 @@ public class DBMselect {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT * FROM POKEMON WHERE ID = " + id);
 
-
             pokemonInfo[0] = rs.getString("NAME");
             pokemonInfo[1] = rs.getString("LIFEPOINTS");
-
-
 
             rs.close();
             stmt.close();
@@ -42,6 +39,6 @@ public class DBMselect {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
+        return pokemonInfo;
     }
-
 }
