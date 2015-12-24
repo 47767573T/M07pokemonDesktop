@@ -11,20 +11,24 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import sample.DataBaseManagement.DBMmanager;
 
 import javax.swing.text.html.ImageView;
 
 public class Controller {
 
+    //Objeto de control de Base de Datos
+    DBMmanager dbm = new DBMmanager();
+
     //ITEMS in GUI
     @FXML
-    ImageView ivOverview;
+    ImageView ivOverview;       //Url de Imagen del pokemon mostrada
     @FXML
-    AnchorPane apOverview;
+    AnchorPane apOverview;      //Panel donde estan todos los items de detalle del pokemon
     @FXML
-    Label lbName;
+    Label lbName;               //label del nombre del pokemon
     @FXML
-    Label lbID;
+    Label lbID;                 //label del id del pokemon
     @FXML
     Label lbLife;
     @FXML
@@ -47,12 +51,10 @@ public class Controller {
     String lpNext;
     String nameNext;
 
-
-    public ObservableList<String> items = FXCollections.observableArrayList();
+    public static ObservableList<String> items = FXCollections.observableArrayList();
 
     public void initialize(){
 
-        apOverview.setVisible(false);       //inicialmente ocultamos el Overview
         lvPokemons.setItems(items);
 
         lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -69,5 +71,10 @@ public class Controller {
 
     public void onSalir(ActionEvent actionEvent){
         Platform.exit();
+    }
+
+    public void onRefrescar(ActionEvent actionEvent) {
+        items.clear();
+        DBMmanager.createDB();
     }
 }

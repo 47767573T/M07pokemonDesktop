@@ -18,7 +18,7 @@ public class DBMinsert {
 
             stmt = connection.createStatement();
 
-            //Formar el estamento para insertar en las tablas por cada pokemon
+            //Formar la query para insertar en las tablas por cada pokemon
             String sql = "INSERT INTO POKEMON "
                             +"(ID,NAME,LIFEPOINTS,RESOURCE_URI,IMAGE) "
                         +"VALUES "

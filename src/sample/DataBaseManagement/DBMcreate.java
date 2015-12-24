@@ -35,4 +35,24 @@ public class DBMcreate {
             System.exit(0);
         }
     }
+
+    public static void deleteTabla() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            connection = DriverManager.getConnection(dbFichero);
+            System.out.println("Acceso correcto a BBDD");
+            stmt = connection.createStatement();
+
+            String sql = "DROP TABLE POKEMON";
+
+            stmt.executeUpdate(sql);
+            stmt.close();
+            connection.close();
+
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
+    }
+
 }

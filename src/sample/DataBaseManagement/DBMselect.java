@@ -36,6 +36,7 @@ public class DBMselect {
             stmt.close();
             connection.close();
             return pokemonInfo;
+
         } catch (Exception e) {
             System.err.println(e.getClass().getName() + ": " + e.getMessage());
 

@@ -15,16 +15,17 @@
       <AnchorPane fx:id="apOverview" prefHeight="338.0" prefWidth="248.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="ivOverview" fitHeight="208.0" fitWidth="237.0" layoutX="6.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="lbName" alignment="CENTER" layoutX="25.0" layoutY="238.0" prefHeight="17.0" prefWidth="200.0" text="nombre" textAlignment="CENTER" />
-            <Label fx:id="lbID" layoutX="14.0" layoutY="4.0" prefHeight="24.0" prefWidth="69.0" text="ID" textAlignment="CENTER" />
-            <Label fx:id="lbLife" alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="255.0" prefHeight="44.0" prefWidth="173.0" text="Vida" textAlignment="CENTER" textOverrun="CLIP">
+            <Label fx:id="lbName" alignment="CENTER" layoutX="38.0" layoutY="238.0" prefHeight="17.0" prefWidth="173.0" text="nombre" textAlignment="CENTER" />
+            <Label fx:id="lbID" layoutX="99.0" layoutY="4.0" prefHeight="24.0" prefWidth="52.0" text="ID" textAlignment="CENTER" />
+            <Label fx:id="lbLife" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="255.0" prefHeight="40.0" prefWidth="122.0" text="Vida" textAlignment="CENTER" textOverrun="CLIP">
                <font>
                   <Font size="37.0" />
                </font>
             </Label>
-            <Button fx:id="btSalir" layoutX="191.0" layoutY="3.0" mnemonicParsing="false" onAction="#onSalir" prefHeight="17.0" prefWidth="52.0" text="Salir" />
-            <Button fx:id="btNext" layoutX="139.0" layoutY="3.0" mnemonicParsing="false" text="Button" />
-            <Button fx:id="btBack" layoutX="87.0" layoutY="3.0" mnemonicParsing="false" text="Button" />
+            <Button fx:id="btSalir" layoutX="208.0" layoutY="4.0" mnemonicParsing="false" onAction="#onSalir" prefHeight="25.0" prefWidth="35.0" text="Salir" />
+            <Button fx:id="btNext" layoutX="208.0" layoutY="297.0" mnemonicParsing="false" onAction="#onSeleccionarSiguiente" prefHeight="25.0" prefWidth="35.0" text="Button" />
+            <Button fx:id="btBack" layoutX="12.0" layoutY="297.0" mnemonicParsing="false" onAction="#onSeleccionarAnterior" prefHeight="25.0" prefWidth="35.0" text="Button" />
+            <Button fx:id="btRefrescar" layoutX="12.0" layoutY="4.0" mnemonicParsing="false" onAction="#onRefrescar" prefHeight="25.0" prefWidth="35.0" text="Salir" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="259.0" prefHeight="338.0" prefWidth="256.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="259.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

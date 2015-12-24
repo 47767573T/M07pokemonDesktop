@@ -83,7 +83,7 @@ public class APImanager {
 
             pokemons.add(pokemon);
 
-            //Lo insertamos en la tabla directamente
+            //Lo insertamos en la BD directamente
             DBMmanager.insertDB(id, name, lifePoints, pokemonURL, imageURL);
         }
     }
