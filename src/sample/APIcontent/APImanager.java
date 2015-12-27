@@ -19,8 +19,7 @@ import java.util.List;
 public class APImanager {
 
     public static String baseURL = "http://pokeapi.co/";
-    private static String pokedexURL = baseURL + "api/v1/pokedex/1/";
-    private static String resource_URI = "";
+    private static String pokedexURL = baseURL + "api/v1/pokedex/1";
     private static Pokedex pokedex;
     private static List<Pokemon> pokemons;
 
@@ -42,6 +41,8 @@ public class APImanager {
 
         //Llamamos al metodo para crear los objetos pokemons de la pokedex
         jsonToPokemon(jo);
+
+        System.out.println("2");
         pokedex.setPokemon(pokemons);
     }
 
@@ -53,17 +54,23 @@ public class APImanager {
      */
     public static void jsonToPokemon(JSONObject jObj) throws IOException {
 
-        pokemons = new ArrayList<>();
+        String prueba = fixUrl(jObj.get("pokemon").toString());
+        System.out.println(prueba);
 
+        pokemons = new ArrayList<>();
         //Creamos array de objetos Json
-        JSONArray ja = (JSONArray) JSONValue.parse(jObj.get("pokemon").toString());
+        JSONArray ja = (JSONArray) JSONValue.parse(prueba);
 
         //Recorremos el array creado para extraer informacion del json
-        for (int i = 0; i < ja.size(); i++) {
-
+        for (int i = 0; i < 25; i++) {
             //Creamos objeto json padre para extraer nombre
-            JSONObject padreJO = (JSONObject) JSONValue.parse(getJSON(ja.get(i).toString()));
+
+            String preJson = getJSON("http://pokeapi.co/api/v1/pokemon/" + (i+1));
+
+            JSONObject padreJO = (JSONObject) JSONValue.parse(preJson);
+
             String name = padreJO.get("name").toString();
+            System.out.println(name);
 
             String pokemonURL = baseURL + padreJO.get("resource_uri").toString();
 
@@ -105,9 +112,19 @@ public class APImanager {
         StringBuilder result = new StringBuilder();
 
         while ((line = reader.readLine()) != null) {
+            System.out.println(line);
             result.append(line);
         }
+
+        System.out.println(line);
         reader.close();
         return result.toString();
+    }
+
+    public static String fixUrl (String urlToFix){
+        String fixed = urlToFix.replace("\\","");
+
+
+        return fixed;
     }
 }

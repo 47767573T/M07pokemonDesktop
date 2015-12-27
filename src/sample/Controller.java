@@ -58,6 +58,8 @@ public class Controller {
 
     public void initialize(){
 
+        DBMmanager.createDB();
+
         lvPokemons.setItems(items);
         apOverview.setVisible(false);
 
@@ -77,13 +79,10 @@ public class Controller {
                 lbLife.setText(pokemonActual[1]);
                 lbID.setText(idStr);
 
+                //mostramos el overView rellenado
                 apOverview.setVisible(true);
             }
         });
-
-
-
-
     }
 
     //public void info
@@ -95,5 +94,12 @@ public class Controller {
     public void onRefrescar(ActionEvent actionEvent) {
         items.clear();
         DBMmanager.createDB();
+    }
+
+    public void onSeleccionarSiguiente(ActionEvent actionEvent) {
+    }
+
+    public void onSeleccionarAnterior(ActionEvent actionEvent) {
+
     }
 }
