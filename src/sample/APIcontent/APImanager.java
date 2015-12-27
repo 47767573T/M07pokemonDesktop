@@ -40,8 +40,6 @@ public class APImanager {
 
         //Llamamos al metodo para crear los objetos pokemons de la pokedex
         jsonToPokemon(jo);
-
-        System.out.println("2");
         pokedex.setPokemon(pokemons);
     }
 
@@ -52,9 +50,6 @@ public class APImanager {
      * @throws IOException
      */
     public static void jsonToPokemon(JSONObject jObj) throws IOException {
-
-        //String prueba = fixUrl(jObj.get("pokemon").toString());
-        System.out.println(jObj.get("pokemon").toString());
 
         pokemons = new ArrayList<>();
 
@@ -67,7 +62,6 @@ public class APImanager {
             JSONObject padreJO = (JSONObject) JSONValue.parse(preJson);
 
             String name = padreJO.get("name").toString();
-            System.out.println(name);
 
             String pokemonURL = baseURL + padreJO.get("resource_uri").toString();
 
@@ -109,19 +103,11 @@ public class APImanager {
         StringBuilder result = new StringBuilder();
 
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
             result.append(line);
         }
 
         System.out.println(line);
         reader.close();
         return result.toString();
-    }
-
-    public static String fixUrl (String urlToFix){
-        String fixed = urlToFix.replace("\\","");
-
-
-        return fixed;
     }
 }

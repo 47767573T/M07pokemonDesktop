@@ -23,6 +23,9 @@ public class Controller {
     DBMmanager dbm = new DBMmanager();
 
     //ITEMS in GUI
+
+    @FXML
+    AnchorPane apScreen;
     @FXML
     ImageView ivOverview;       //Url de Imagen del pokemon mostrada
     @FXML
@@ -51,8 +54,9 @@ public class Controller {
     public static ObservableList<String> items = FXCollections.observableArrayList();
     public static String[] pokemonActual = DBMmanager.getPokemon(posicionActual);
 
-    public void initialize(){
 
+
+    public void initialize(){
         DBMmanager.createDB();
 
         lvPokemons.setItems(items);
@@ -79,6 +83,7 @@ public class Controller {
                 //mostramos el overView rellenado
                 apOverview.setVisible(true);
             }
+
         });
     }
 
