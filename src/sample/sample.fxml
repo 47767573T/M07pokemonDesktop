@@ -21,7 +21,7 @@
                   <Glow />
                </effect></Label>
             <Label fx:id="lbID" alignment="CENTER" layoutX="99.0" layoutY="4.0" prefHeight="24.0" prefWidth="52.0" text="ID" textAlignment="CENTER" />
-            <Label fx:id="lbLife" alignment="CENTER" contentDisplay="CENTER" layoutX="64.0" layoutY="255.0" prefHeight="40.0" prefWidth="122.0" text="Vida" textAlignment="CENTER" textOverrun="CLIP">
+            <Label fx:id="lbLife" alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="258.0" prefHeight="40.0" prefWidth="122.0" text="Vida" textAlignment="CENTER" textOverrun="CLIP">
                <font>
                   <Font size="37.0" />
                </font>

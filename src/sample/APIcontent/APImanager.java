@@ -54,7 +54,7 @@ public class APImanager {
         pokemons = new ArrayList<>();
 
         //Recorremos el array creado para extraer informacion del json
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 50; i++) {
 
             String preJson = getJSON("http://pokeapi.co/api/v1/pokemon/" + (i+1));
 
@@ -105,8 +105,6 @@ public class APImanager {
         while ((line = reader.readLine()) != null) {
             result.append(line);
         }
-
-        System.out.println(line);
         reader.close();
         return result.toString();
     }

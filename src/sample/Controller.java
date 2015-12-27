@@ -12,7 +12,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import sample.DataBaseManagement.DBMmanager;
 
 import java.util.ArrayList;
@@ -55,23 +56,24 @@ public class Controller {
     public static String[] pokemonActual = DBMmanager.getPokemon(posicionActual);
 
 
-
     public void initialize(){
         DBMmanager.createDB();
 
         lvPokemons.setItems(items);
         apOverview.setVisible(false);
+        pintar();
 
         lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
 
-
                 String filaSeleccionada = lvPokemons.getSelectionModel().getSelectedItem().toString();
                 String idStr = filaSeleccionada.substring (0,(filaSeleccionada.indexOf("-")-1));
                 int idSeleccionado = Integer.parseInt(idStr);
-                IDs.add(idSeleccionado);
 
+                //Guardamos el id seleccionado
+                IDs.add(idSeleccionado);
+                posicionActual = IDs.size()-1;
                 pokemonActual = DBMmanager.getPokemon(idSeleccionado);
 
                 //rellenamos datos de Overview
@@ -83,11 +85,8 @@ public class Controller {
                 //mostramos el overView rellenado
                 apOverview.setVisible(true);
             }
-
         });
     }
-
-    //public void info
 
     public void onSalir(ActionEvent actionEvent){
         Platform.exit();
@@ -124,5 +123,16 @@ public class Controller {
         lbName.setText(pokemonActual[0]);
         lbLife.setText(pokemonActual[1]);
         lbID.setText(Integer.toString(idSiguiente));
+    }
+
+    public void pintar (){
+        apOverview.setBackground(new Background(new BackgroundFill(Color.CORAL, null, null)));
+        apScreen.setBackground(new Background(new BackgroundFill(Color.CORAL, null, null)));
+        lbID.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
+        lbID.setStyle("-fx-border-color: black;");
+        lbLife.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
+        lbLife.setStyle("-fx-border-color: black;");
+        lbName.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
+        lbName.setStyle("-fx-border-color: black;");
     }
 }
