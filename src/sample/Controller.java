@@ -24,7 +24,6 @@ public class Controller {
     DBMmanager dbm = new DBMmanager();
 
     //ITEMS in GUI
-
     @FXML
     AnchorPane apScreen;
     @FXML
@@ -63,7 +62,7 @@ public class Controller {
         apOverview.setVisible(false);
         pintar();
 
-        lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {   //Metodo que define el click en el listview
             @Override
             public void handle(MouseEvent event) {
 
@@ -88,15 +87,27 @@ public class Controller {
         });
     }
 
+    /**
+     * Funcion que define el evento de salir del programa
+     * @param actionEvent
+     */
     public void onSalir(ActionEvent actionEvent){
         Platform.exit();
     }
 
+    /**
+     * Funcion que descarga nuevamente la base de datos y actualiza el listView del programa
+     * @param actionEvent
+     */
     public void onRefrescar(ActionEvent actionEvent) {
         items.clear();
         DBMmanager.createDB();
     }
 
+    /**
+     * Funcion que muestra en OverView el pokemon siguiente mostrado
+     * @param actionEvent
+     */
     public void onSeleccionarSiguiente(ActionEvent actionEvent) {
 
         if (posicionActual != (IDs.size()-1)) posicionActual +=1;
@@ -111,6 +122,10 @@ public class Controller {
         lbID.setText(Integer.toString(idSiguiente));
     }
 
+    /**
+     * Funcion que muestra en OverView el pokemon anteriormente mostrado
+     * @param actionEvent
+     */
     public void onSeleccionarAnterior(ActionEvent actionEvent) {
 
         if (posicionActual != 0) posicionActual -=1;
@@ -125,6 +140,9 @@ public class Controller {
         lbID.setText(Integer.toString(idSiguiente));
     }
 
+    /**
+     * Funcion que define el color del fondo y los bordes de los items
+     */
     public void pintar (){
         apOverview.setBackground(new Background(new BackgroundFill(Color.CORAL, null, null)));
         apScreen.setBackground(new Background(new BackgroundFill(Color.CORAL, null, null)));

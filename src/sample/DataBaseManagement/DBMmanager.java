@@ -45,15 +45,25 @@ public class DBMmanager {
         }
     }
 
-
+    /**
+     * método de control de insercion de pokemons en la base de datos y el listado del programa
+     * @param id identificador del pokemon
+     * @param name nombre del pokemon
+     * @param lifePoint puntos de vida del pokemon
+     * @param resURI url de la fuente del pokemon
+     * @param img url de la imagen del pokemon
+     */
     public static void insertDB(int id, String name, String lifePoint, String resURI, String img) {
         DBMinsert.insertPokemons(id, name, lifePoint, resURI, img);
         Controller.items.add(id+" - "+name);
     }
 
-
+    /**
+     * Metodo que busca el pokemon segun ID en BBDD
+     * @param id identificador para buscar pokemon en BBDD
+     * @return Array conn informacion necesaria del pokemon
+     */
     public static String[] getPokemon (int id){
-
         if (id == idReciente) return pokemonReciente;
         else{
             idReciente = id;
@@ -62,6 +72,9 @@ public class DBMmanager {
         }
     }
 
+    /**
+     * funcion para borrar la tabla de pokemon en la BBDD
+     */
     public static void deleteDB(){ DBMcreate.deleteTabla(); }
 
     /**

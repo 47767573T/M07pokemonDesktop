@@ -15,7 +15,11 @@ public class DBMselect {
     static Statement stmt = null;
     static String[] pokemonInfo = new String[4];
 
-
+    /**
+     * método que extrae informacion de pokemons de la BBDD segun id
+     * @param id identificador para encontrar al pokemon
+     * @return array de informacion sobre el pokemon
+     */
     public static String[] getPokemon (int id) {
 
 

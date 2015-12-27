@@ -14,6 +14,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("POKEMONS");
         primaryStage.setScene(new Scene(root, 398, 341));
+
+        //marcamos el valor maximo de la ventana del programa
         primaryStage.setMaxHeight(370);
         primaryStage.setMaxWidth(398);
 

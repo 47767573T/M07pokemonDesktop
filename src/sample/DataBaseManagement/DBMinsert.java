@@ -10,6 +10,14 @@ public class DBMinsert {
     static Connection connection;
     static Statement stmt = null;
 
+    /**
+     * metodo que crea la QUERY de insercion a la BBDD e introduce los valores dados
+     * @param id identificador del pokemon
+     * @param name nombre del pokemon
+     * @param lp puntos de vida del pokemon
+     * @param resURI url de la fuente del pokemon
+     * @param img url de la imagen del pokemon
+     */
     public static void insertPokemons(int id, String name, String lp, String resURI, String img) {
         try {
             Class.forName("org.sqlite.JDBC");

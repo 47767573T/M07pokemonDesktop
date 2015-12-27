@@ -27,18 +27,13 @@ public class Pokemon {
 
 
     //SETTERS y GETTERS
-    public int getId() {return id;}
     public void setId(int id) {this.id = id;}
 
-    public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
-    public String getLifepoints() {return lifepoints;}
     public void setLifepoints(String lifepoints) {this.lifepoints = lifepoints;}
 
-    public String getResourceUri() {return resourceUri;}
     public void setResourceUri(String resourceUri) {this.resourceUri = resourceUri;}
 
-    public String getImage() {return image;}
     public void setImage(String image) {this.image = image;}
 }

@@ -28,16 +28,12 @@ public class Pokedex{
 
 
     //GETTERS y SETTERS
-    public String getCreated() {return created;}
     public void setCreated(String created) {this.created = created;}
 
-    public String getModified() {return modified;}
     public void setModified(String modified) {this.modified = modified;}
 
-    public String getName() {return name;}
     public void setName(String name) {this.name = name;}
 
-    public List<Pokemon> getPokemon() {return pokemons;}
     public void setPokemon(List<Pokemon> pokemons) {this.pokemons = pokemons;}
 }
 

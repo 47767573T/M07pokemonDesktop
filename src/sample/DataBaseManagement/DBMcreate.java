@@ -11,6 +11,9 @@ public class DBMcreate {
     static Connection connection = DBMmanager.conn;
     static Statement stmt = null;
 
+    /**
+     * Funcion que crea y lanza la query para crear la tabla que albergara informacion de los pokemons
+     */
     public static void createTabla() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -36,6 +39,9 @@ public class DBMcreate {
         }
     }
 
+    /**
+     * funcion que borra la tabla de pokemons de la BBDD
+     */
     public static void deleteTabla() {
         try {
             Class.forName("org.sqlite.JDBC");
