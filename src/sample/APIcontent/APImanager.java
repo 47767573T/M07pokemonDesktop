@@ -1,6 +1,5 @@
 package sample.APIcontent;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import sample.DataBaseManagement.DBMmanager;
@@ -54,19 +53,17 @@ public class APImanager {
      */
     public static void jsonToPokemon(JSONObject jObj) throws IOException {
 
-        String prueba = fixUrl(jObj.get("pokemon").toString());
-        System.out.println(prueba);
+        //String prueba = fixUrl(jObj.get("pokemon").toString());
+        System.out.println(jObj.get("pokemon").toString());
 
         pokemons = new ArrayList<>();
-        //Creamos array de objetos Json
-        JSONArray ja = (JSONArray) JSONValue.parse(prueba);
 
         //Recorremos el array creado para extraer informacion del json
-        for (int i = 0; i < 25; i++) {
-            //Creamos objeto json padre para extraer nombre
+        for (int i = 0; i < 5; i++) {
 
             String preJson = getJSON("http://pokeapi.co/api/v1/pokemon/" + (i+1));
 
+            //Creamos objeto json padre para extraer nombre
             JSONObject padreJO = (JSONObject) JSONValue.parse(preJson);
 
             String name = padreJO.get("name").toString();

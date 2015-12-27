@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class Main extends Application {
 
     @Override
@@ -14,6 +15,9 @@ public class Main extends Application {
         primaryStage.setTitle("POKEMONS");
         primaryStage.setScene(new Scene(root, 500, 350));
         primaryStage.show();
+
+        //Controller c = (Controller)loader.getController();
+        // controller.btCopy.setGraphic(new ImageView("copy.png"));
     }
 
 

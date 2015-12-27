@@ -9,13 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-
-import sample.DataBaseManagement.DBMmanager;
-
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import sample.DataBaseManagement.DBMmanager;
+
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -41,20 +41,15 @@ public class Controller {
     Button btBack;
     @FXML
     Button btNext;
+    @FXML
+    Button btRefrescar;
 
     //Resto de variables internas
-    int idBack;
-    String imageBack;   //url de la ultima imagen vista
-    String lpBack;
-    String nameBack;
-
-    int idNext;
-    String imageNext;   //url de la la imagen desde la que se accede a la ultima imagen vista
-    String lpNext;
-    String nameNext;
+    static ArrayList<Integer> IDs = new ArrayList<>();      //Array que recoje los pokemos vistos
+    static int posicionActual = 1;                                       //posicion actual dentro del array de ids vistos
 
     public static ObservableList<String> items = FXCollections.observableArrayList();
-    public static String[] pokemonActual = DBMmanager.getPokemon(1);
+    public static String[] pokemonActual = DBMmanager.getPokemon(posicionActual);
 
     public void initialize(){
 
@@ -66,10 +61,12 @@ public class Controller {
         lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+
+
                 String filaSeleccionada = lvPokemons.getSelectionModel().getSelectedItem().toString();
                 String idStr = filaSeleccionada.substring (0,(filaSeleccionada.indexOf("-")-1));
                 int idSeleccionado = Integer.parseInt(idStr);
-                //System.out.println(idSeleccionado); //Borrar tras testeo
+                IDs.add(idSeleccionado);
 
                 pokemonActual = DBMmanager.getPokemon(idSeleccionado);
 
@@ -97,9 +94,30 @@ public class Controller {
     }
 
     public void onSeleccionarSiguiente(ActionEvent actionEvent) {
+
+        if (posicionActual != (IDs.size()-1)) posicionActual +=1;
+
+        int idSiguiente = IDs.get(posicionActual);
+        pokemonActual = DBMmanager.getPokemon(idSiguiente);
+
+        //rellenamos datos de Overview
+        ivOverview.setImage(new Image(pokemonActual[3]));
+        lbName.setText(pokemonActual[0]);
+        lbLife.setText(pokemonActual[1]);
+        lbID.setText(Integer.toString(idSiguiente));
     }
 
     public void onSeleccionarAnterior(ActionEvent actionEvent) {
 
+        if (posicionActual != 0) posicionActual -=1;
+
+        int idSiguiente = IDs.get(posicionActual);
+        pokemonActual = DBMmanager.getPokemon(idSiguiente);
+
+        //rellenamos datos de Overview
+        ivOverview.setImage(new Image(pokemonActual[3]));
+        lbName.setText(pokemonActual[0]);
+        lbLife.setText(pokemonActual[1]);
+        lbID.setText(Integer.toString(idSiguiente));
     }
 }
