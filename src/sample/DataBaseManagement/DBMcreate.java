@@ -40,7 +40,6 @@ public class DBMcreate {
         try {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection(dbFichero);
-            System.out.println("Acceso correcto a BBDD");
             stmt = connection.createStatement();
 
             String sql = "DROP TABLE POKEMON";

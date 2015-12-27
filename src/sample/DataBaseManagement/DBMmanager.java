@@ -27,11 +27,9 @@ public class DBMmanager {
         dbRuta = "jdbc:sqlite:pokedex.db";
 
         if (dbRutaExist("pokedex")) {
-            System.out.println("DataBase no existe");
+            System.out.println("DataBase ya existe");
             deleteDB();
         }
-
-        System.out.println("DataBase no existe");
         try {
             Class.forName("org.sqlite.JDBC");
             conn = DriverManager.getConnection(dbRuta);
