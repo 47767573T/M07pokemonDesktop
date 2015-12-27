@@ -11,9 +11,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
 import sample.DataBaseManagement.DBMmanager;
 
-import javax.swing.text.html.ImageView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Controller {
 
@@ -52,22 +54,39 @@ public class Controller {
     String nameNext;
 
     public static ObservableList<String> items = FXCollections.observableArrayList();
+    public static String[] pokemonActual = DBMmanager.getPokemon(1);
 
     public void initialize(){
 
         lvPokemons.setItems(items);
+        apOverview.setVisible(false);
 
         lvPokemons.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                String filaSeleccionada = lvPokemons.getSelectionModel().getSelectedItem().toString();
+                String idStr = filaSeleccionada.substring (0,(filaSeleccionada.indexOf("-")-1));
+                int idSeleccionado = Integer.parseInt(idStr);
+                //System.out.println(idSeleccionado); //Borrar tras testeo
 
+                pokemonActual = DBMmanager.getPokemon(idSeleccionado);
+
+                //rellenamos datos de Overview
+                ivOverview.setImage(new Image(pokemonActual[3]));
+                lbName.setText(pokemonActual[0]);
+                lbLife.setText(pokemonActual[1]);
+                lbID.setText(idStr);
+
+                apOverview.setVisible(true);
             }
         });
-        apOverview.setVisible(true);
+
 
 
 
     }
+
+    //public void info
 
     public void onSalir(ActionEvent actionEvent){
         Platform.exit();

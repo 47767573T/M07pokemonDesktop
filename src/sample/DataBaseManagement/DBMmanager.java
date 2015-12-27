@@ -17,6 +17,7 @@ public class DBMmanager {
     static public int idReciente = 1;
     static public String dbRuta;
     static public Connection conn;
+    static public String[] pokemonReciente = new String[4];
 
     /**
      * método para crear la base de datos y la tabla de pokemons si ésta no existe.
@@ -49,24 +50,17 @@ public class DBMmanager {
 
     public static void insertDB(int id, String name, String lifePoint, String resURI, String img) {
         DBMinsert.insertPokemons(id, name, lifePoint, resURI, img);
-        Controller.items.add(id+" "+name);
+        Controller.items.add(id+" - "+name);
     }
 
 
-    public static String getPokemon (int id, int option){
-        String[] pokemonSelected;
+    public static String[] getPokemon (int id){
 
-        if (id != idReciente) pokemonSelected = DBMselect.pokemonInfo;
+        if (id == idReciente) return pokemonReciente;
         else{
-            pokemonSelected = DBMselect.getPokemon(id);
             idReciente = id;
-        }
-
-        switch (option){
-            case 0: return id+" "+pokemonSelected[0];
-            case 1: return pokemonSelected[1];
-            case 2: return id+" "+pokemonSelected[3];
-            default: return "not found";
+            pokemonReciente = DBMselect.getPokemon(id);
+            return pokemonReciente;
         }
     }
 
